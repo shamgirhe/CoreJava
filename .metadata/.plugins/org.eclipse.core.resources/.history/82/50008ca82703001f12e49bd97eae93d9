@@ -1,0 +1,216 @@
+package com.app.tester;
+
+public class Main {
+
+}
+/*
+ * import java.util.List;
+import java.util.Scanner;
+
+// Main class for interacting with the user
+public class Main {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        SellerDAO sellerDAO = new SellerDAO();
+        ProductDAO productDAO = new ProductDAO();
+        ECommerceService service = new ECommerceService(sellerDAO, productDAO);
+
+        while (true) {
+            System.out.println("1. Add a new seller");
+            System.out.println("2. Seller login");
+            System.out.println("3. Add a new product");
+            System.out.println("4. Search products by category");
+            System.out.println("5. Exit");
+            System.out.print("Choose an option: ");
+            int option = scanner.nextInt();
+            scanner.nextLine();  // consume the newline character
+
+            switch (option) {
+                case 1:
+                    System.out.print("Enter seller id: ");
+                    int sellerId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter seller name: ");
+                    String sellerName = scanner.nextLine();
+                    System.out.print("Enter seller email: ");
+                    String sellerEmail = scanner.nextLine();
+                    System.out.print("Enter seller password: ");
+                    String sellerPassword = scanner.nextLine();
+                    System.out.print("Enter seller address: ");
+                    String sellerAddress = scanner.nextLine();
+
+                    Seller newSeller = new Seller(sellerId, sellerName, sellerEmail, sellerPassword, sellerAddress);
+                    service.addSeller(newSeller);
+                    System.out.println("Seller added successfully.");
+                    break;
+
+                case 2:
+                    System.out.print("Enter email: ");
+                    String loginEmail = scanner.nextLine();
+                    System.out.print("Enter password: ");
+                    String loginPassword = scanner.nextLine();
+
+                    boolean loggedIn = service.login(loginEmail, loginPassword);
+                    if (loggedIn) {
+                        System.out.println("Login successful!");
+                    } else {
+                        System.out.println("Invalid email or password.");
+                    }
+                    break;
+
+                case 3:
+                    if (service.loggedInSeller == null) {
+                        System.out.println("Error: You must be logged in to add a product.");
+                        break;
+                    }
+
+                    System.out.print("Enter product id: ");
+                    int productId = scanner.nextInt();
+                    scanner.nextLine();
+                    System.out.print("Enter product name: ");
+                    String productName = scanner.nextLine();
+                    System.out.print("Enter product category (ELECTRONICS, CLOTHING, FOOD, BOOKS, TOYS): ");
+                    String productCategory = scanner.nextLine();
+                    System.out.print("Enter product price: ");
+                    double productPrice = scanner.nextDouble();
+                    System.out.print("Is the product in stock? (true/false): ");
+                    boolean inStock = scanner.nextBoolean();
+
+                    Category category = Category.valueOf(productCategory.toUpperCase());
+                    Product newProduct = new Product(productId, productName, category, productPrice, inStock);
+
+                    System.out.println(service.addProduct(newProduct));
+                    break;
+
+                case 4:
+                    System.out.print("Enter category to search (ELECTRONICS, CLOTHING, FOOD, BOOKS, TOYS): ");
+                    String searchCategory = scanner.nextLine().toUpperCase();
+
+                    Category categoryToSearch = Category.valueOf(searchCategory);
+                    List<Product> foundProducts = service.searchProductsByCategory(categoryToSearch);
+
+                    if (foundProducts.isEmpty()) {
+                        System.out.println("No products found in the '" + searchCategory + "' category.");
+                    } else {
+                        System.out.println("Products found:");
+                        for (Product product : foundProducts) {
+                            System.out.println(product);
+                        }
+                    }
+                    break;
+
+                case 5:
+                    System.out.println("Exiting...");
+                    scanner.close();
+                    return;
+
+                default:
+                    System.out.println("Invalid option. Please try again.");
+                    break;
+            }
+        }
+    }
+}
+
+ */
+  */
+  
+  /*import java.util.List;
+
+// Service class for handling business logic
+class ECommerceService {
+    private SellerDAO sellerDAO;
+    private ProductDAO productDAO;
+    private Seller loggedInSeller;
+
+    public ECommerceService(SellerDAO sellerDAO, ProductDAO productDAO) {
+        this.sellerDAO = sellerDAO;
+        this.productDAO = productDAO;
+    }
+
+    // Add a new seller
+    public void addSeller(Seller seller) {
+        sellerDAO.addSeller(seller);
+    }
+
+    // Seller login
+    public boolean login(String email, String password) {
+        Seller seller = sellerDAO.findByEmail(email);
+        if (seller != null && seller.getPassword().equals(password)) {
+            loggedInSeller = seller;
+            return true;
+        }
+        return false;
+    }
+
+    // Add a new product (only if seller is logged in)
+    public String addProduct(Product product) {
+        if (loggedInSeller != null) {
+            productDAO.addProduct(product);
+            return "Product added successfully.";
+        } else {
+            return "Error: Seller not logged in.";
+        }
+    }
+
+    // Search for products by category
+    public List<Product> searchProductsByCategory(Category category) {
+        return productDAO.findByCategory(category);
+    }
+}
+*/
+  /*
+   * import java.util.ArrayList;
+import java.util.List;
+
+// DAO class for handling seller data
+class SellerDAO {
+    private List<Seller> sellers = new ArrayList<>();
+
+    // Add a new seller
+    public void addSeller(Seller seller) {
+        sellers.add(seller);
+    }
+
+    // Find a seller by email
+    public Seller findByEmail(String email) {
+        for (Seller seller : sellers) {
+            if (seller.getEmail().equals(email)) {
+                return seller;
+            }
+        }
+        return null;
+    }
+
+    // Get all sellers
+    public List<Seller> getAllSellers() {
+        return sellers;
+    }
+}
+
+// DAO class for handling product data
+class ProductDAO {
+    private List<Product> products = new ArrayList<>();
+
+    // Add a new product
+    public void addProduct(Product product) {
+        products.add(product);
+    }
+
+    // Search products by category
+    public List<Product> findByCategory(Category category) {
+        List<Product> result = new ArrayList<>();
+        for (Product product : products) {
+            if (product.getCategory() == category) {
+                result.add(product);
+            }
+        }
+        return result;
+    }
+
+    // Get all products
+    public List<Product> getAllProducts() {
+        return products;
+    }
+}
+*/

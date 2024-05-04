@@ -1,0 +1,88 @@
+package com.app.tester;
+
+import java.sql.SQLException;
+import java.util.*;
+
+import com.app.dao.*;
+import com.app.pojos.*;
+import com.app.utils.*;
+
+public class Tester {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		boolean flag = true;
+
+		try (UserDao ud = new UserDao(); CategoryDao cd = new CategoryDao(); BlogDao bd = new BlogDao();) {
+			while (flag) {
+				UsersUtils.menu();
+				switch (sc.nextInt()) {
+				case 0:
+					flag = UsersUtils.Exits();
+					break;
+				case 1: {
+					User user = UsersUtils.UserLogin(sc, ud);
+					if (user != null) {
+						boolean flag1 = true;
+						while (flag1) {
+							BlogsUtils.menu();
+							System.out.println("*-*-*-*-*-*-*-*");
+							System.out.println("*#* Login user Name is " + user.getFullName() + " *#*");
+							System.out.println("Enter your Choice ::");
+							switch (sc.nextInt()) {
+							case 0:
+								flag1 = UsersUtils.Exits();
+								break;
+							case 1:
+								CategoryUtils.displayCategory(cd);
+								break;
+							case 2:
+								CategoryUtils.addCategory(sc, cd);
+								break;
+							case 3:
+								BlogsUtils.addBlogs(sc, bd, user, cd);
+								break;
+							case 4:
+								BlogsUtils.displayBlogs(bd, cd, user, true);
+								break;
+							case 5:
+								BlogsUtils.displayBlogs(bd, cd, user, false);
+								break;
+							case 6:
+								BlogsUtils.deleteBlogs(sc, bd, user);
+								break;
+							case 7:
+								BlogsUtils.readBlog(sc, bd);
+								break;
+							case 8:
+								BlogsUtils.editBlog(sc, bd, user);
+								break;
+							case 9:
+								BlogsUtils.serchBlog(sc, bd);
+								break;
+
+							default:
+								System.out.println("Invalid Choice !!!");
+								break;
+							}
+						}
+					} else
+						System.out.println("User Credential are wrongs!!!!");
+
+				}
+					break;
+				case 2:
+					UsersUtils.UserRegister(sc, ud);
+					break;
+				case 3:
+					UsersUtils.displayUsers(ud);
+					break;
+				default:
+					System.out.println("Invalid Choice ::");
+					break;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+}

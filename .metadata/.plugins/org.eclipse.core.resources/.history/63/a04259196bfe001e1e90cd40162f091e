@@ -1,0 +1,55 @@
+package com.app.tester;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.LinkedHashSet;
+import java.util.Scanner;
+import java.util.Set;
+
+import com.app.pojos.Address;
+import com.app.pojos.Person;
+
+public class PersonTester {
+
+	public static void main(String[] args) {
+
+		Set<Person> personset = new LinkedHashSet<>();
+		boolean flag = true;
+		int pin;
+		String name, dist, area, birthDate;
+		Address homeAddr;
+
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+
+		// Parsing the date string into a Date object
+		Date date = dateFormat.parse(birthDate);
+
+		// Displaying the parsed date in the desired format
+		System.out.println("Parsed Date: " + dateFormat.format(date));
+		Scanner sc = new Scanner(System.in);
+		while (flag) {
+			menu();
+			switch (sc.nextInt()) {
+			case 0:
+				flag = false;
+				System.out.println("thank you");
+				break;
+			case 1: {
+				System.out.println("Enter the person name::");
+				personset.add(new Person(name, date, pin, dist, area));
+			}
+				break;
+
+			default:
+				break;
+			}
+		}
+
+	}
+
+	private static void menu() {
+		System.out.println("1. add new person.\r\n" + "2. display all.\r\n" + "3. find by name.\r\n"
+				+ "4. save in file.\r\n" + "5. load from file.\r\n" + "6. display in sorted order of dist and name."
+				+ "0. Exits." + "\r\n Enter your choice::");
+	}
+}

@@ -1,0 +1,33 @@
+package com.app.utils;
+
+import java.util.Scanner;
+
+import com.app.dao.UserDao;
+import com.app.pojos.User;
+
+public class UsersUtils {
+	
+	public static  User UserLogin(Scanner sc ,UserDao ud) {
+		sc.nextLine();
+		System.out.print("Enter your email ::");
+		String email = sc.nextLine();
+		System.out.print("Enter your Passwords ::");
+		String password = sc.nextLine();
+		return ud.login(email, password);
+	}
+	
+	public static boolean Exits() {
+		System.out.println("*-*-*-*-*-*-*-*-*-*-");
+		System.out.println("Thanks you.");
+		System.out.println("*-*-*-*-*-*-*-*-*-*-");
+		return false;
+	}
+	
+	public static void menu() {
+		System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+		System.out.println("0.Exits\r\n1.Login\r\n2.Register.\r\n3.All Users.");
+		System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+		System.out.println("Enter your choice::");
+
+	}
+}

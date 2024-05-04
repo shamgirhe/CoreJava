@@ -1,0 +1,31 @@
+package com.app.dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+
+import com.app.pojos.Seller;
+import com.app.utils.DbUtil;
+
+public class ProductDao {
+     private Connection connection;
+     private String query;
+     
+	 public ProductDao() throws SQLException {
+		this.connection = DbUtil.getConnection();
+	}
+
+
+	public boolean addSeller(Seller seller){
+		 query = "INSERT INTO seller (name, email, password, address) VALUES (?, ?, ?,?);";
+		 try (PreparedStatement stmt = connection.prepareStatement(query)) {
+				stmt.setString(1, seller.getName());
+				stmt.setString(2, seller.getEmail());
+				stmt.setString(3, seller.getPassword());
+				
+				stmt.executeUpdate();
+			}
+	 }
+	
+}

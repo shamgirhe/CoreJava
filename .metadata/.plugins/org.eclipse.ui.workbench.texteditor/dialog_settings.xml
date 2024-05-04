@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
+		<item key="wrap" value="true"/>
+		<item key="casesensitive" value="false"/>
+		<item key="wholeword" value="false"/>
+		<item key="incremental" value="false"/>
+		<item key="isRegEx" value="false"/>
+		<item key="selection" value="blogdao"/>
+		<list key="findhistory">
+			<item value="bd"/>
+			<item value="ud"/>
+			<item value="cd"/>
+			<item value="sc"/>
+			<item value="private"/>
+			<item value="import java.util.ArrayList;"/>
+			<item value="conn"/>
+			<item value="validateAllInputs"/>
+			<item value="vehicles"/>
+			<item value="Number"/>
+			<item value="Employee"/>
+			<item value="arr"/>
+			<item value="index"/>
+			<item value="size"/>
+			<item value="nextLine"/>
+		</list>
+		<list key="replacehistory">
+			<item value="blogdao"/>
+			<item value="userdao"/>
+			<item value="categorydao"/>
+			<item value="scanner"/>
+			<item value="blogsdao"/>
+			<item value="connection"/>
+			<item value="new Library"/>
+			<item value="new Li"/>
+			<item value="library"/>
+			<item value="roll"/>
+			<item value="Student"/>
+			<item value="student"/>
+			<item value="count"/>
+			<item value="fruitsBasket.length"/>
+			<item value="next"/>
+		</list>
+	</section>
+	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="1209"/>
+		<item key="DIALOG_Y_ORIGIN" value="451"/>
+		<item key="DIALOG_WIDTH" value="414"/>
+		<item key="DIALOG_HEIGHT" value="454"/>
+		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-15|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
+	</section>
+	<section name="org.eclipse.ui.texteditor.GotoLineAction$GotoLineDialog_dialogBounds">
+		<item key="DIALOG_X_ORIGIN" value="646"/>
+		<item key="DIALOG_Y_ORIGIN" value="349"/>
+	</section>
+</section>

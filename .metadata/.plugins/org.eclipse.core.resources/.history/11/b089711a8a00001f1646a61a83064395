@@ -1,0 +1,11 @@
+package com.app.utils;
+
+public class UsersUtils {
+
+	public static boolean Exits() {
+		System.out.println("*-*-*-*-*-*-*-*-*-*-");
+		System.out.println("Thanks you.");
+		System.out.println("*-*-*-*-*-*-*-*-*-*-");
+		return false;
+	}
+}

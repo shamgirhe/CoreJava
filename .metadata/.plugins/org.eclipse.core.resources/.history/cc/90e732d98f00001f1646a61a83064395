@@ -1,0 +1,37 @@
+package com.app.utils;
+
+import java.sql.SQLException;
+import java.util.Date;
+import java.util.Scanner;
+
+import com.app.dao.BlogDao;
+import com.app.dao.CategoryDao;
+import com.app.pojos.Blogs;
+import com.app.pojos.User;
+
+public class BlogsUtils {
+
+	
+	public static void addBlogs(Scanner sc , BlogDao bd,User user , CategoryDao cd) throws SQLException {
+		sc.nextLine();
+		System.out.println("Enter the title ::");
+		String title = sc.nextLine();
+		System.out.println("Enter the Contents ::");
+		String contents = sc.nextLine();
+		CategoryUtils.displayCategory(cd);
+		System.out.println("Enter the Category id :: ");
+		int id = sc.nextInt();
+		int i = bd.addBlogs(new Blogs(title, contents, new Date(), user.getUserId(), id));
+		if (i > 0)
+			System.out.println("Blogs is Added SuccessFully!!");
+		else
+			System.out.println("Blogs is Not Added!!");
+	}
+	
+	public static void menu() {
+		System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+		System.out.println(
+				" 0.LogOut\r\n 1.show category\r\n 2.add category.\r\n 3.create blog.\r\n 4.display all blogs.\r\n 5.show my blogs.\r\n 6.delete blogs.\r\n 7.read blog contents.\r\n 8.edit blogs\r\n 9.search blog");
+		System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+	}
+}

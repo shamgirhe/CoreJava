@@ -1,0 +1,11 @@
+package com.app.utils;
+
+public class BlogsUtils {
+
+	public static void menu() {
+		System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+		System.out.println(
+				" 0.LogOut\r\n 1.show category\r\n 2.add category.\r\n 3.create blog.\r\n 4.display all blogs.\r\n 5.show my blogs.\r\n 6.delete blogs.\r\n 7.read blog contents.\r\n 8.edit blogs\r\n 9.search blog");
+		System.out.println("*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-");
+	}
+}

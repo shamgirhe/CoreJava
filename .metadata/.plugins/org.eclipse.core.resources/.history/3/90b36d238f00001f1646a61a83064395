@@ -1,0 +1,20 @@
+package com.app.utils;
+
+import java.sql.SQLException;
+
+import com.app.dao.CategoryDao;
+
+public class CategoryUtils {
+
+	public static void displayCategory(CategoryDao cd) throws SQLException {
+		System.out.println(
+				"--------------------------------------------------------------------------------------------");
+		System.out.printf("%5s%20s%30s\n", "id", "Title", "Descreption");
+		System.out.println(
+				"--------------------------------------------------------------------------------------------");
+		cd.showCategories().forEach(s -> System.out.printf("%5s%20s%40s\n", s.getId(),
+				s.getTitle(), s.getDescriptions()));
+		System.out.println(
+				"--------------------------------------------------------------------------------------------");
+	}
+}
